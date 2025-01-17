@@ -1,19 +1,19 @@
 import { Controller,Get,Post,Delete,Param,Body,Put } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { user } from './user.model';
+import { User } from './user.model';
 import { CreateUserDto } from './user.dto';
 
 @Controller('users')
 export class UsersController {
     constructor(private readonly usersService: UsersService){}
     @Get()
-    findall(): user[] {
+    findall(): User[] {
         return this.usersService.findall();
 
     }
 
     @Get(':id')
-    findone(@Param('id') id:string) : user | undefined {
+    findone(@Param('id') id:string) : User | undefined {
         return this.usersService.findone(Number(id));
 
     }
@@ -34,7 +34,7 @@ export class UsersController {
 
     @Put(':id')
     update(
-        @Param('id') id: string, @Body() updatedfields: Partial<user>): string {
+        @Param('id') id: string, @Body() updatedfields: Partial<User>): string {
             const updatedUser = this.usersService.update(Number(id),updatedfields);
             if(!updatedUser) {
                 return `user with id ${id} not found`;
