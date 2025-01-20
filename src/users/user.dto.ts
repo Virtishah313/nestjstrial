@@ -1,12 +1,9 @@
-// user.dto.ts
-
 import { IsString, IsEmail, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreateUserDto {
-
-    @IsNumber()
-    @IsNotEmpty()
-    id: number;
+  @IsNumber()
+  @IsNotEmpty()
+  id: number;
 
   @IsString()
   @IsNotEmpty()
@@ -15,6 +12,4 @@ export class CreateUserDto {
   @IsEmail()
   @IsNotEmpty()
   email: string;
-
-  
 }
